@@ -1,0 +1,104 @@
+<div class="form my-3">
+    <h1 class="text-center text-info">Products list</h1>
+
+    <div class="form-group">
+        <label>Product Name</label>
+        <input id="name" class="form-control ">
+        <div id="nameAlert" class="alert alert-danger my-2 d-none ">The Name is Invalid</div>
+    </div>
+
+
+    <div class="form-group">
+        <label>Product Category</label>
+        <input id="category" class="form-control">
+        <div id="categoryAlert" class="alert alert-danger my-2 d-none">The category is Invalid</div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label>Product Price</label>
+        <input id="price" class="form-control">
+        <div id="priceAlert" class="alert alert-danger my-2 d-none ">The Price is Invalid</div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label>Product Description</label>
+        <textarea id="desc" class="form-control"></textarea>
+        <div id="descAlert" class="alert alert-danger my-2 d-none ">The Description is Invalid</div>
+
+    </div>
+
+
+    <button  id="addBtn" class="btn btn-outline-info float-right">Add Product</button>
+    <div class="clearfix"></div>
+</div>
+<h1 class="text-center text-info">Products list</h1>
+
+<form [formGroup]="productForm" (ngSubmit)="addProduct()">
+    <div class="form-group mb-2">
+        <label>Product Name</label>
+        <input [class.is-invalid]="productForm.controls['productName'].invalid&&productForm.controls['productName'].touched" class="form-control my-2" type="text" formControlName="productName">
+        <span *ngIf="productForm.controls['productName'].invalid&&productForm.controls['productName'].touched" class="text-danger">first name is not valid</span>
+    </div>
+    <div class="form-group mb-2">
+        <label>Product Category</label>
+        <input [class.is-invalid]="productForm.controls['productCategory'].invalid&&productForm.controls['productCategory'].touched" class="form-control my-2" type="text" formControlName="productCategory">
+        <span *ngIf="productForm.controls['productCategory'].invalid&&productForm.controls['productCategory'].touched" class="text-danger">last name is not valid</span>
+    </div>
+    <div class="form-group mb-2">
+        <label>Product Price</label>
+        <input [class.is-invalid]="productForm.controls['productPrice'].invalid&&productForm.controls['productPrice'].touched" class="form-control my-2" type="email" formControlName="productPrice">
+        <span *ngIf="productForm.controls['productPrice'].invalid&&productForm.controls['productPrice'].touched" class="text-danger">email name is not valid</span>
+    </div>
+    <div class="form-group mb-2">
+        <label>Product Description</label>
+        <input [class.is-invalid]="productForm.controls['productDescription'].invalid&&productForm.controls['productDescription'].touched" class="form-control my-2" formControlName="productDescription">
+        <span *ngIf="productForm.controls['productDescription'].invalid&&productForm.controls['productDescription'].touched" class="text-danger">password name is not valid</span>
+    </div>
+    <button [disabled]="productForm.invalid" type="submit" class="btn btn-outline-info float-right">Add Product</button>
+</form>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Product Name</th>
+            <th>Product Category</th>
+            <th>Product Price</th>
+            <th>Product Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{product.productName}}</td>
+            <td>{{product.productCategory}}</td>
+            <td>{{product.productPrice}}</td>
+            <td>{{product.productDescription}}</td>
+            <td></td>
+        </tr>
+        
+    </tbody>
+</table>
+
+<div class="table my-3">
+    <table class="table table-striped text-center">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Catogery</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+        
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
+    </table>
+
+</div>

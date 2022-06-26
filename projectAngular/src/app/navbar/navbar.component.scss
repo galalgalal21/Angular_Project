@@ -1,0 +1,10 @@
+@import '../../styles.scss';
+.navbar{
+    background-color: $bgTransparent;
+    .nav-link{
+        color: $fontColor;
+    }
+    i{
+        margin: 10px;
+    }
+}
